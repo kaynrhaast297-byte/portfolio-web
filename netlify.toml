@@ -1,0 +1,6 @@
+[build]
+  command = "echo 'Projeto estático — nenhum build necessário, apenas publique a raiz'"
+  publish = "."
+
+[context.production.environment]
+  NODE_ENV = "production"

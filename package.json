@@ -1,0 +1,10 @@
+{
+  "name": "portfolio-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "serve . --single",
+    "preview": "npx serve .",
+    "optimize-images": "node ../tools/optimize-images.js"
+  }
+}
