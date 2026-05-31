@@ -538,6 +538,52 @@
       .project-card { padding: 2rem 1.5rem; }
       footer { flex-direction: column; gap: 1rem; text-align: center; }
     }
+
+    /* Loading dots */
+    .projects-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 4rem 0;
+    }
+    .loading-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: dotPulse 1.2s infinite ease-in-out;
+    }
+    .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+    .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes dotPulse {
+      0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); }
+      40% { opacity: 1; transform: scale(1); }
+    }
+    .project-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    .project-updated {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+    .status-concluido {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid var(--accent2);
+      color: var(--accent2);
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
   </style>
 </head>
 <body>
@@ -621,40 +667,16 @@
     <div class="projects-header reveal">
       <div>
         <div class="section-tag">003 — Em progresso</div>
-        <h2 class="projects-heading">Projetos<br>em andamento</h2>
+        <h2 class="projects-heading" id="projects-heading">Projetos<br>em andamento</h2>
       </div>
     </div>
-
-    <a href="#" class="project-card reveal">
-      <div>
-        <div class="project-num">Projeto 01</div>
-        <span class="wip-badge">⚙ Em andamento</span>
-        <div class="project-title">Imobiliária</div>
-        <p class="project-desc">Sistema de gestão imobiliária em desenvolvimento — listagem de imóveis, filtros e painel admin. Projeto em andamento, aprendendo Next.js e Supabase na prática.</p>
-        <div class="project-tags">
-          <span class="project-tag">Next.js</span>
-          <span class="project-tag">Supabase</span>
-          <span class="project-tag">TypeScript</span>
-          <span class="project-tag">Tailwind</span>
-        </div>
+    <div id="projects-container">
+      <div class="projects-loading">
+        <span class="loading-dot"></span>
+        <span class="loading-dot"></span>
+        <span class="loading-dot"></span>
       </div>
-      <div class="project-arrow">↗</div>
-    </a>
-
-    <a href="#" class="project-card reveal">
-      <div>
-        <div class="project-num">Projeto 02</div>
-        <span class="wip-badge">⚙ Em andamento</span>
-        <div class="project-title">Dashboard Admin</div>
-        <p class="project-desc">Dashboard responsivo com visualização de dados e métricas. Projeto em andamento, sendo construído com React e foco em componentes reutilizáveis.</p>
-        <div class="project-tags">
-          <span class="project-tag">React</span>
-          <span class="project-tag">Recharts</span>
-          <span class="project-tag">CSS Modules</span>
-        </div>
-      </div>
-      <div class="project-arrow">↗</div>
-    </a>
+    </div>
   </section>
 
   <!-- CONTATO -->
@@ -719,15 +741,18 @@
     });
 
     // Reveal on scroll
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 100);
-        }
-      });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => observer.observe(el));
+    function initReveal() {
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('visible'), i * 100);
+          }
+        });
+      }, { threshold: 0.1 });
+      reveals.forEach(el => observer.observe(el));
+    }
+    initReveal();
 
     // Form
     function handleSubmit(e) {
@@ -741,6 +766,130 @@
         e.target.reset();
       }, 3000);
     }
+
+    // ─── PROJETOS DINÂMICOS ───────────────────────────────────────────────
+    const GITHUB_USER = 'kaynrhaast297-byte';
+
+    // Dados locais dos projetos (editados no projetos.json)
+    // Fallback caso o fetch falhe
+    const PROJETOS_LOCAL = [
+      {
+        "repo": "portfolio-web",
+        "titulo": "Portfólio Pessoal",
+        "descricao": "Meu portfólio desenvolvido com HTML, CSS e JavaScript puro.",
+        "status": "Em andamento",
+        "tecnologias": ["HTML", "CSS", "JavaScript"],
+        "demo": "https://portfolio-web-five-rouge.vercel.app"
+      },
+      {
+        "repo": null,
+        "titulo": "Sistema Imobiliário",
+        "descricao": "Sistema de gestão imobiliária com listagem de imóveis e painel admin.",
+        "status": "Em andamento",
+        "tecnologias": ["Next.js", "Supabase", "TypeScript", "Tailwind"],
+        "demo": null
+      },
+      {
+        "repo": null,
+        "titulo": "Dashboard Admin",
+        "descricao": "Painel administrativo responsivo com visualização de dados e métricas.",
+        "status": "Em andamento",
+        "tecnologias": ["React", "Recharts", "CSS Modules"],
+        "demo": null
+      }
+    ];
+
+    function timeAgo(dateStr) {
+      if (!dateStr) return null;
+      const diff = Date.now() - new Date(dateStr);
+      const days = Math.floor(diff / 86400000);
+      if (days === 0) return 'Atualizado hoje';
+      if (days === 1) return 'Atualizado ontem';
+      if (days < 30) return `Atualizado há ${days} dias`;
+      const months = Math.floor(days / 30);
+      return `Atualizado há ${months} mês${months > 1 ? 'es' : ''}`;
+    }
+
+    function renderProjects(projetos) {
+      const container = document.getElementById('projects-container');
+      const heading = document.getElementById('projects-heading');
+
+      const concluidos = projetos.filter(p => p.status === 'Concluído').length;
+      const andamento = projetos.filter(p => p.status === 'Em andamento').length;
+
+      if (concluidos > 0 && andamento > 0) {
+        heading.innerHTML = 'Projetos<br><span style="color:var(--accent)">selecionados</span>';
+      } else if (concluidos > 0) {
+        heading.innerHTML = 'Projetos<br><span style="color:var(--accent)">concluídos</span>';
+      }
+
+      container.innerHTML = projetos.map((p, i) => {
+        const isConcluido = p.status === 'Concluído';
+        const badge = isConcluido
+          ? `<span class="status-concluido">✓ Concluído</span>`
+          : `<span class="wip-badge">⚙ Em andamento</span>`;
+
+        const updated = p.updated_at ? `<span class="project-updated">${timeAgo(p.updated_at)}</span>` : '';
+
+        const tags = (p.tecnologias || []).map(t => `<span class="project-tag">${t}</span>`).join('');
+
+        const href = p.demo || (p.repo ? `https://github.com/${GITHUB_USER}/${p.repo}` : '#');
+        const target = href !== '#' ? 'target="_blank"' : '';
+
+        return `
+        <a href="${href}" ${target} class="project-card reveal">
+          <div>
+            <div class="project-num">Projeto ${String(i + 1).padStart(2, '0')}</div>
+            <div class="project-meta">${badge}${updated}</div>
+            <div class="project-title">${p.titulo}</div>
+            <p class="project-desc">${p.descricao}</p>
+            <div class="project-tags">${tags}</div>
+          </div>
+          <div class="project-arrow">↗</div>
+        </a>`;
+      }).join('');
+
+      // Re-init reveal for new cards
+      initReveal();
+    }
+
+    async function enrichWithGitHub(projetos) {
+      const enriched = await Promise.all(projetos.map(async (p) => {
+        if (!p.repo) return p;
+        try {
+          const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${p.repo}`);
+          if (!res.ok) return p;
+          const data = await res.json();
+          return {
+            ...p,
+            descricao: p.descricao || data.description || p.descricao,
+            updated_at: data.pushed_at,
+            stars: data.stargazers_count
+          };
+        } catch { return p; }
+      }));
+      return enriched;
+    }
+
+    async function loadProjects() {
+      let projetos = PROJETOS_LOCAL;
+
+      // Tenta carregar projetos.json externo
+      try {
+        const res = await fetch('./data/projetos.json');
+        if (res.ok) projetos = await res.json();
+      } catch (_) {}
+
+      // Enriquece com dados do GitHub
+      try {
+        projetos = await enrichWithGitHub(projetos);
+      } catch (_) {}
+
+      renderProjects(projetos);
+    }
+
+    loadProjects();
+    // ─────────────────────────────────────────────────────────────────────
   </script>
 </body>
 </html>
