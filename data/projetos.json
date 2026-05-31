@@ -13,7 +13,7 @@
     "descricao": "Protótipo de site moderno desenvolvido com Next.js e Tailwind para modernizar o sistema web da empresa.",
     "status": "Em andamento",
     "tecnologias": ["Next.js", "TypeScript", "Tailwind"],
-    "demo": null
+    "demo": "https://projeto-star-tau.vercel.app"
   },
   {
     "repo": null,
