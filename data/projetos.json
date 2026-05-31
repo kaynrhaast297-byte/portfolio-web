@@ -1,0 +1,26 @@
+[
+  {
+    "repo": "portfolio-web",
+    "titulo": "Portfólio Pessoal",
+    "descricao": "Meu portfólio desenvolvido com HTML, CSS e JavaScript puro.",
+    "status": "Em andamento",
+    "tecnologias": ["HTML", "CSS", "JavaScript"],
+    "demo": "https://portfolio-web-five-rouge.vercel.app"
+  },
+  {
+    "repo": null,
+    "titulo": "Sistema Imobiliário",
+    "descricao": "Sistema de gestão imobiliária com listagem de imóveis, filtros e painel admin.",
+    "status": "Em andamento",
+    "tecnologias": ["Next.js", "Supabase", "TypeScript", "Tailwind"],
+    "demo": null
+  },
+  {
+    "repo": null,
+    "titulo": "Dashboard Admin",
+    "descricao": "Painel administrativo responsivo com visualização de dados e métricas.",
+    "status": "Em andamento",
+    "tecnologias": ["React", "Recharts", "CSS Modules"],
+    "demo": null
+  }
+]
