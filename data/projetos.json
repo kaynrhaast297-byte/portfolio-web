@@ -27,16 +27,8 @@
     "repo": null,
     "titulo": "Dashboard Admin",
     "descricao": "Painel administrativo responsivo com visualização de dados e métricas.",
-    "status": "Em andamento",
-    "tecnologias": ["React", "Recharts", "CSS Modules"],
-    "demo": null
-  },
-  {
-    "repo": null,
-    "titulo": "GrowthLens Dashboard",
-    "descricao": "Dashboard profissional para análise de métricas, indicadores e visualização de dados em tempo real.",
     "status": "Concluído",
-    "tecnologias": ["Next.js", "TypeScript", "Analytics", "Dashboard"],
+    "tecnologias": ["React", "Recharts", "CSS Modules"],
     "demo": "https://growthlens-dashboard.vercel.app/"
   }
 ]
