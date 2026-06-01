@@ -30,5 +30,13 @@
     "status": "Em andamento",
     "tecnologias": ["React", "Recharts", "CSS Modules"],
     "demo": null
+  },
+  {
+    "repo": null,
+    "titulo": "GrowthLens Dashboard",
+    "descricao": "Dashboard profissional para análise de métricas, indicadores e visualização de dados em tempo real.",
+    "status": "Concluído",
+    "tecnologias": ["Next.js", "TypeScript", "Analytics", "Dashboard"],
+    "demo": "https://growthlens-dashboard.vercel.app/"
   }
 ]
