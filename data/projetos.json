@@ -2,33 +2,41 @@
   {
     "repo": "portfolio-web",
     "titulo": "Portfólio Pessoal",
-    "descricao": "Meu portfólio profissional desenvolvido com HTML, CSS e JavaScript puro.",
-    "status": "Em andamento",
+    "descricao": "Portfólio profissional desenvolvido com HTML, CSS e JavaScript, pensado para candidatura em vagas e leitura rápida por recrutadores.",
+    "status": "Em evolução",
+    "tipo": "Front-end",
+    "impacto": "SEO básico, layout responsivo, dados externos em JSON e deploy público na Vercel.",
     "tecnologias": ["HTML", "CSS", "JavaScript"],
     "demo": "https://portfolio-web-five-rouge.vercel.app"
   },
   {
+    "repo": "imovel-sp-mvp",
+    "titulo": "Sistema Imobiliário",
+    "descricao": "MVP de imobiliária com busca de imóveis, filtros, painel administrativo, fluxo de leads e análise de preço justo.",
+    "status": "Em evolução",
+    "tipo": "Full-stack",
+    "impacto": "Projeto usado para praticar Next.js, Supabase, rotas de API, validação e organização de domínio.",
+    "tecnologias": ["Next.js", "Supabase", "TypeScript", "Tailwind"],
+    "demo": "https://imovel-sp-mvp.vercel.app"
+  },
+  {
     "repo": "projeto-star",
     "titulo": "Projeto Star",
-    "descricao": "Protótipo de site moderno desenvolvido com Next.js e Tailwind para modernizar o sistema web da empresa.",
-    "status": "Em andamento",
+    "descricao": "Protótipo de site moderno para uma empresa industrial, com foco visual, conteúdo institucional e formulários.",
+    "status": "Em evolução",
+    "tipo": "Front-end",
+    "impacto": "Exercício de composição visual, responsividade e estrutura de página institucional.",
     "tecnologias": ["Next.js", "TypeScript", "Tailwind"],
     "demo": "https://projeto-star-tau.vercel.app"
   },
   {
-    "repo": null,
-    "titulo": "Sistema Imobiliário",
-    "descricao": "Sistema de gestão imobiliária com listagem de imóveis, filtros e painel admin.",
-    "status": "Em andamento",
-    "tecnologias": ["Next.js", "Supabase", "TypeScript", "Tailwind"],
-    "demo": null
-  },
-  {
-    "repo": null,
-    "titulo": "Dashboard Admin",
-    "descricao": "Painel administrativo responsivo com visualização de dados e métricas.",
-    "status": "Concluído",
-    "tecnologias": ["React", "Recharts", "CSS Modules"],
+    "repo": "growthlens-dashboard",
+    "titulo": "GrowthLens Dashboard",
+    "descricao": "Dashboard estático com visualização de métricas, painéis de acompanhamento e componentes de leitura rápida.",
+    "status": "Em evolução",
+    "tipo": "Dashboard",
+    "impacto": "Treino de organização de dados, indicadores e visualização com JavaScript.",
+    "tecnologias": ["HTML", "CSS", "JavaScript", "Chart.js"],
     "demo": "https://growthlens-dashboard.vercel.app/"
   }
 ]
