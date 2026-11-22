@@ -1,216 +1,122 @@
 const GITHUB_USER = "kaynrhaast297-byte";
 const CONTACT_EMAIL = "kaynrhaast297@gmail.com";
+const GITHUB_TIMEOUT_MS = 2500;
 
-const FALLBACK_PROJECTS = [
-  {
-    repo: "portfolio-web",
-    titulo: "Portfólio Pessoal",
-    descricao: "Portfólio profissional em HTML, CSS e JavaScript, com foco em apresentação clara para recrutadores.",
-    status: "Em evolução",
-    tipo: "Front-end",
-    impacto: "SEO básico, layout responsivo, dados externos em JSON e deploy público.",
-    tecnologias: ["HTML", "CSS", "JavaScript"],
-    demo: "https://portfolio-web-five-rouge.vercel.app"
-  },
-  {
-    repo: "imovel-sp-mvp",
-    titulo: "Sistema Imobiliário",
-    descricao: "MVP imobiliário com busca de imóveis, filtros, painel administrativo e análise de preço justo.",
-    status: "Em evolução",
-    tipo: "Full-stack",
-    impacto: "Projeto usado para praticar Next.js, Supabase, rotas de API, validação e fluxo de leads.",
-    tecnologias: ["Next.js", "Supabase", "TypeScript", "Tailwind"],
-    demo: "https://imovel-sp-mvp.vercel.app"
-  },
-  {
-    repo: "projeto-star",
-    titulo: "Projeto Star",
-    descricao: "Protótipo de site moderno para uma empresa industrial, com foco visual e formulários.",
-    status: "Em evolução",
-    tipo: "Front-end",
-    impacto: "Exercício de composição visual, responsividade e estrutura de página institucional.",
-    tecnologias: ["Next.js", "TypeScript", "Tailwind"],
-    demo: "https://projeto-star-tau.vercel.app"
-  },
-  {
-    repo: "growthlens-dashboard",
-    titulo: "GrowthLens Dashboard",
-    descricao: "Dashboard estático com visualização de métricas e painéis de acompanhamento.",
-    status: "Em evolução",
-    tipo: "Dashboard",
-    impacto: "Treino de organização de dados, indicadores e visualização com JavaScript.",
-    tecnologias: ["HTML", "CSS", "JavaScript", "Chart.js"],
-    demo: "https://growthlens-dashboard.vercel.app/"
-  }
-];
+function setupNavigation() {
+  const nav = document.querySelector(".nav");
+  const toggle = document.getElementById("nav-toggle");
+  const links = document.getElementById("nav-links");
+  if (!nav || !toggle || !links) return;
 
-function byId(id) {
-  return document.getElementById(id);
-}
+  const mobile = window.matchMedia("(max-width: 920px)");
+  let open = false;
 
-function createElement(tag, options = {}) {
-  const element = document.createElement(tag);
-
-  if (options.className) element.className = options.className;
-  if (options.text) element.textContent = options.text;
-  if (options.href) element.href = options.href;
-  if (options.target) element.target = options.target;
-  if (options.rel) element.rel = options.rel;
-  if (options.ariaLabel) element.setAttribute("aria-label", options.ariaLabel);
-
-  return element;
-}
-
-function formatUpdate(dateStr) {
-  if (!dateStr) return "Atualização local";
-
-  const date = new Date(dateStr);
-  if (Number.isNaN(date.getTime())) return "Atualização local";
-
-  const days = Math.max(0, Math.floor((Date.now() - date.getTime()) / 86400000));
-  if (days === 0) return "Atualizado hoje";
-  if (days === 1) return "Atualizado ontem";
-  if (days < 30) return `Atualizado há ${days} dias`;
-
-  const months = Math.floor(days / 30);
-  if (months < 12) return `Atualizado há ${months} ${months === 1 ? "mês" : "meses"}`;
-
-  const years = Math.floor(months / 12);
-  return `Atualizado há ${years} ${years === 1 ? "ano" : "anos"}`;
-}
-
-function projectUrl(project) {
-  if (project.demo) return project.demo;
-  if (project.repo) return `https://github.com/${GITHUB_USER}/${project.repo}`;
-  return "#contato";
-}
-
-function renderProjects(projects) {
-  const container = byId("projects-container");
-  const metricProjects = byId("metric-projects");
-  if (!container) return;
-
-  container.replaceChildren();
-
-  if (metricProjects) metricProjects.textContent = String(projects.length);
-
-  if (!projects.length) {
-    const empty = createElement("div", { className: "empty-state" });
-    const text = createElement("p", { text: "Não foi possível carregar os projetos agora. Use os links de contato para pedir mais detalhes." });
-    empty.append(text);
-    container.append(empty);
-    return;
+  function setOpen(value, restoreFocus = false) {
+    open = mobile.matches && value;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.textContent = open ? "Fechar menu" : "Menu";
+    links.hidden = mobile.matches && !open;
+    if (restoreFocus) toggle.focus();
   }
 
-  projects.forEach((project, index) => {
-    const href = projectUrl(project);
-    const card = createElement("a", {
-      className: "project-card",
-      href,
-      target: href.startsWith("http") ? "_blank" : undefined,
-      rel: href.startsWith("http") ? "noopener noreferrer" : undefined,
-      ariaLabel: `Abrir projeto ${project.titulo}`
-    });
+  function syncViewport() {
+    const focused = document.activeElement;
+    toggle.hidden = !mobile.matches;
+    setOpen(false);
+    if (mobile.matches && links.contains(focused)) toggle.focus();
+    if (!mobile.matches && focused === toggle) links.querySelector("a")?.focus();
+  }
 
-    const head = createElement("div", { className: "project-head" });
-    head.append(
-      createElement("span", { className: "project-index", text: `Projeto ${String(index + 1).padStart(2, "0")}` }),
-      createElement("span", { className: "project-status", text: project.status || "Em evolução" })
-    );
-
-    const body = createElement("div");
-    body.append(
-      createElement("p", { className: "project-type", text: project.tipo || "Projeto web" }),
-      createElement("h3", { className: "project-title", text: project.titulo || "Projeto sem título" }),
-      createElement("p", { className: "project-desc", text: project.descricao || "Descrição em atualização." })
-    );
-
-    if (project.impacto) {
-      body.append(createElement("p", { className: "project-impact", text: project.impacto }));
+  toggle.addEventListener("click", () => setOpen(!open));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && open) {
+      event.preventDefault();
+      setOpen(false, true);
     }
-
-    const tags = createElement("div", { className: "project-tags" });
-    (project.tecnologias || []).forEach((tech) => {
-      tags.append(createElement("span", { className: "project-tag", text: tech }));
-    });
-    body.append(tags);
-
-    const footer = createElement("div", { className: "project-footer" });
-    footer.append(
-      createElement("span", { text: formatUpdate(project.updated_at) }),
-      createElement("span", { className: "project-arrow", text: "↗" })
-    );
-
-    card.append(head, body, footer);
-    container.append(card);
   });
+  document.addEventListener("click", (event) => {
+    if (open && !nav.contains(event.target)) setOpen(false);
+  });
+  nav.addEventListener("focusout", (event) => {
+    if (open && !nav.contains(event.relatedTarget)) setOpen(false);
+  });
+  links.addEventListener("click", (event) => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link || !open) return;
+    setOpen(false);
+    document.getElementById(link.hash.slice(1))?.focus({ preventScroll: true });
+  });
+  mobile.addEventListener("change", syncViewport);
+  syncViewport();
 }
 
-async function enrichWithGitHub(projects) {
-  const enriched = await Promise.all(projects.map(async (project) => {
-    if (!project.repo) return project;
+// Os cards já estão no HTML. A rede só melhora um texto opcional, sem recriar o DOM.
+function enhanceProjectUpdates() {
+  document.querySelectorAll("[data-github-repo]").forEach(async (label) => {
+    const repo = label.dataset.githubRepo;
+    if (!/^[a-zA-Z0-9][a-zA-Z0-9._-]*$/.test(repo || "")) return;
 
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), GITHUB_TIMEOUT_MS);
     try {
-      const response = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${project.repo}`, {
-        headers: { Accept: "application/vnd.github+json" }
+      const response = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${repo}`, {
+        headers: { Accept: "application/vnd.github+json" },
+        signal: controller.signal
       });
-
-      if (!response.ok) return project;
-
+      if (!response.ok) return;
       const data = await response.json();
-      return {
-        ...project,
-        updated_at: data.pushed_at || project.updated_at
-      };
+      if (controller.signal.aborted || typeof data.pushed_at !== "string") return;
+      const date = new Date(data.pushed_at);
+      if (Number.isNaN(date.getTime())) return;
+      const formatted = new Intl.DateTimeFormat("pt-BR", { timeZone: "UTC" }).format(date);
+      label.textContent = `Código atualizado em ${formatted}.`;
     } catch {
-      return project;
+      // Falha, indisponibilidade ou timeout mantêm o conteúdo local e os links intactos.
+    } finally {
+      window.clearTimeout(timeout);
     }
-  }));
-
-  return enriched;
-}
-
-async function loadProjects() {
-  try {
-    const response = await fetch("./data/projetos.json", { cache: "no-cache" });
-    if (!response.ok) throw new Error("Falha ao carregar projetos");
-    const projects = await response.json();
-    renderProjects(await enrichWithGitHub(projects));
-  } catch {
-    renderProjects(await enrichWithGitHub(FALLBACK_PROJECTS));
-  }
+  });
 }
 
 function setupContactForm() {
-  const form = byId("contact-form");
-  const status = byId("form-status");
-  if (!form) return;
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
+  const emailLink = document.getElementById("contact-email-link");
+  if (!form || !status || !emailLink) return;
+  const initialStatus = status.textContent;
+  form.hidden = false;
+
+  form.addEventListener("input", () => {
+    emailLink.hidden = true;
+    emailLink.removeAttribute("href");
+    status.textContent = initialStatus;
+  });
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
+    if (!form.reportValidity()) return;
     const data = new FormData(form);
-    const nome = String(data.get("nome") || "").trim();
-    const email = String(data.get("email") || "").trim();
-    const mensagem = String(data.get("mensagem") || "").trim();
-
-    const subject = encodeURIComponent("Contato pelo portfólio - oportunidade");
-    const body = encodeURIComponent(
-      `Olá Jonathan,\n\n${mensagem}\n\nNome: ${nome}\nEmail: ${email}`
-    );
-
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-
-    if (status) {
-      status.textContent = "Seu aplicativo de email foi aberto com a mensagem preenchida.";
+    const fields = ["nome", "email", "mensagem"];
+    const values = fields.map((name) => String(data.get(name) || "").trim());
+    const emptyIndex = values.findIndex((value) => !value);
+    if (emptyIndex !== -1) {
+      status.textContent = "Preencha os campos com seu nome, email e mensagem.";
+      form.elements.namedItem(fields[emptyIndex])?.focus();
+      return;
     }
+
+    const [nome, email, mensagem] = values;
+    const subject = encodeURIComponent("Contato pelo portfólio - oportunidade");
+    const body = encodeURIComponent(`Olá Jonathan,\n\n${mensagem}\n\nNome: ${nome}\nEmail: ${email}`);
+    emailLink.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    emailLink.hidden = false;
+    status.textContent = "Mensagem preparada. Use “Continuar no email” para solicitar a abertura do seu aplicativo e concluir o envio.";
+    emailLink.focus();
   });
 }
 
-function setupCurrentYear() {
-  const year = byId("current-year");
-  if (year) year.textContent = String(new Date().getFullYear());
-}
-
-setupCurrentYear();
+const year = document.getElementById("current-year");
+if (year) year.textContent = String(new Date().getFullYear());
+setupNavigation();
 setupContactForm();
-loadProjects();
+enhanceProjectUpdates();

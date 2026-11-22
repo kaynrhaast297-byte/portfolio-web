@@ -7,6 +7,7 @@
   --muted: #aaa399;
   --subtle: #928a80;
   --line: #292725;
+  --control-line: #777065;
   --accent: #c8f060;
   --accent-2: #60c8f0;
   --danger: #ff7b72;
@@ -24,6 +25,23 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 body {
@@ -112,7 +130,8 @@ button {
 }
 
 .nav-links a,
-.nav-action {
+.nav-action,
+.nav-toggle {
   color: var(--muted);
   font-family: var(--mono);
   font-size: 0.75rem;
@@ -124,13 +143,29 @@ button {
 .nav-links a:hover,
 .nav-links a:focus-visible,
 .nav-action:hover,
-.nav-action:focus-visible {
+.nav-action:focus-visible,
+.nav-toggle:hover,
+.nav-toggle:focus-visible {
   color: var(--accent);
 }
 
 .nav-action {
   border: 1px solid var(--line);
   padding: 0.65rem 0.9rem;
+}
+
+.nav-toggle {
+  min-height: 44px;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.nav-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 
 .section-shell {
@@ -173,6 +208,7 @@ button {
 
 .hero-content,
 .hero-panel {
+  min-width: 0;
   position: relative;
 }
 
@@ -204,12 +240,12 @@ h3 {
 h1 {
   max-width: 640px;
   margin-bottom: 1.5rem;
-  font-size: 4.85rem;
+  font-size: clamp(3rem, 5.4vw, 4.85rem);
   font-weight: 800;
 }
 
 h2 {
-  font-size: 4.4rem;
+  font-size: clamp(3rem, 5vw, 4.4rem);
   margin-bottom: 1rem;
 }
 
@@ -301,7 +337,7 @@ h3 {
 
 .metrics-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1px;
   margin: 0 0 1rem;
   background: var(--line);
@@ -312,6 +348,10 @@ h3 {
   min-width: 0;
   background: var(--surface);
   padding: 1rem 0.85rem;
+}
+
+.metrics-grid > div:last-child {
+  grid-column: 1 / -1;
 }
 
 .metrics-grid dt {
@@ -333,9 +373,12 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.skill-strip span,
+.skill-strip li,
 .project-tag {
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.035);
@@ -374,12 +417,13 @@ h3 {
 
 .projects-grid {
   display: grid;
+  align-items: start;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
 }
 
 .project-card {
-  min-height: 100%;
+  min-width: 0;
   display: grid;
   grid-template-rows: auto 1fr auto;
   border: 1px solid var(--line);
@@ -390,7 +434,7 @@ h3 {
 }
 
 .project-card:hover,
-.project-card:focus-visible {
+.project-card:focus-within {
   transform: translateY(-4px);
   border-color: rgba(200, 240, 96, 0.72);
   background: var(--surface-strong);
@@ -445,25 +489,114 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem;
-  margin-top: 1.2rem;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
 }
 
 .project-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
   margin-top: 1.4rem;
   padding-top: 1rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+}
+
+.project-link,
+.project-details summary {
+  min-height: 44px;
+  padding: 0.65rem 0;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  overflow-wrap: anywhere;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  text-underline-offset: 4px;
+}
+
+.project-details {
+  margin-top: 0.7rem;
+  border-top: 1px solid var(--line);
+}
+
+.project-details summary {
+  cursor: pointer;
+}
+
+.project-details[open] summary {
+  margin-bottom: 0.65rem;
+}
+
+.project-facts {
+  margin: 0;
+  font-size: 0.92rem;
+  overflow-wrap: anywhere;
+}
+
+.project-facts > div + div {
+  margin-top: 1rem;
+}
+
+.project-facts dt {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.project-facts dd {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+}
+
+.project-facts ul {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.project-facts li + li {
+  margin-top: 0.4rem;
+}
+
+.project-evidence .project-link {
+  padding-top: 0;
+}
+
+.project-update {
+  margin: 0.9rem 0 0;
+  color: var(--subtle);
   font-family: var(--mono);
   font-size: 0.72rem;
 }
 
-.project-arrow {
-  color: var(--accent);
-  font-size: 1.2rem;
+.devcheck-spotlight {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--accent-2);
+  background: var(--surface);
+}
+
+.devcheck-spotlight p {
+  color: var(--muted);
+}
+
+.devcheck-spotlight .section-kicker {
+  color: var(--accent-2);
+}
+
+.devcheck-spotlight h3 {
+  line-height: 1.2;
 }
 
 .process-grid {
@@ -527,11 +660,17 @@ h3 {
 .form-row input,
 .form-row textarea {
   width: 100%;
-  border: 1px solid var(--line);
+  border: 1px solid var(--control-line);
   background: #0c0c0c;
   color: var(--text);
   padding: 0.9rem;
   outline: none;
+}
+
+.form-row input::placeholder,
+.form-row textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
 }
 
 .form-row input:focus,
@@ -547,6 +686,11 @@ h3 {
 .form-submit {
   width: 100%;
   cursor: pointer;
+}
+
+.contact-draft {
+  width: 100%;
+  margin-top: 0.75rem;
 }
 
 .form-note {
@@ -610,6 +754,118 @@ h3 {
   outline-offset: 3px;
 }
 
+.case-study h1 {
+  max-width: 940px;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.08;
+}
+
+.case-study h2 {
+  font-size: clamp(1.65rem, 3vw, 2.5rem);
+  line-height: 1.15;
+}
+
+.case-intro {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.case-intro > .project-link {
+  margin-bottom: 1.5rem;
+}
+
+.case-section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  border-top: 1px solid var(--line);
+}
+
+.case-prose,
+.case-lead {
+  max-width: 80ch;
+  color: var(--muted);
+}
+
+.case-prose a {
+  color: var(--accent);
+  text-underline-offset: 4px;
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.case-panel {
+  min-width: 0;
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.case-panel h3 {
+  line-height: 1.2;
+}
+
+.case-panel p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.case-note {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-left: 2px solid var(--accent-2);
+  background: var(--surface);
+}
+
+.evidence-table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  overflow-wrap: anywhere;
+}
+
+.evidence-table caption {
+  padding-bottom: 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.evidence-table th,
+.evidence-table td {
+  padding: 0.85rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.evidence-table th {
+  color: var(--text);
+}
+
+.evidence-table td,
+.case-figure figcaption {
+  color: var(--muted);
+}
+
+.case-figure {
+  margin: 1.5rem 0;
+}
+
+.case-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+}
+
+.case-figure figcaption {
+  padding-top: 0.85rem;
+  font-size: 0.9rem;
+}
+
 @keyframes pulse {
   0%,
   100% {
@@ -625,10 +881,22 @@ h3 {
 @media (max-width: 920px) {
   .nav {
     min-height: 68px;
+    flex-wrap: wrap;
+    padding: 0.65rem 0;
+    gap: 0.4rem 0.75rem;
   }
 
   .nav-links {
-    display: none;
+    order: 1;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.25rem 0.75rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .nav-toggle {
+    margin-left: auto;
   }
 
   .section-shell {
@@ -637,8 +905,9 @@ h3 {
 
   .hero,
   .about,
-  .contact {
-    grid-template-columns: 1fr;
+  .contact,
+  .devcheck-spotlight {
+    grid-template-columns: minmax(0, 1fr);
     gap: 2.5rem;
   }
 
@@ -652,6 +921,7 @@ h3 {
   }
 
   .projects-grid,
+  .case-grid,
   .process-grid {
     grid-template-columns: 1fr;
   }
@@ -672,8 +942,8 @@ h3 {
     width: min(100% - 28px, 1180px);
   }
 
-  h1 { font-size: 2.45rem; }
-  h2 { font-size: 2.45rem; }
+  h1 { font-size: clamp(1.85rem, 9vw, 2.45rem); }
+  h2 { font-size: clamp(1.85rem, 9vw, 2.45rem); }
 
   .nav-action {
     display: none;

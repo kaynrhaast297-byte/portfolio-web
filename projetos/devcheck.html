@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Estudo de caso do DevCheck: automação de qualidade em Python, CLI e dashboard local. Projeto alpha privado, com evidências, limitações e implementação assistida por IA." />
+  <meta name="theme-color" content="#090909" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="DevCheck | Estudo de caso — Jonathan Medeiros" />
+  <meta property="og:description" content="Python, automação e qualidade de software: problema, decisões técnicas, evidências registradas e limites de uma candidata alpha privada." />
+  <meta property="og:url" content="https://portfolio-web-five-rouge.vercel.app/projetos/devcheck.html" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="canonical" href="https://portfolio-web-five-rouge.vercel.app/projetos/devcheck.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&amp;family=DM+Mono:ital,wght@0,400;1,400&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <title>DevCheck | Estudo de caso — Jonathan Medeiros</title>
+</head>
+<body class="case-study">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header" id="topo">
+    <nav class="nav" aria-label="Navegação do estudo de caso">
+      <a href="../index.html" class="nav-logo" aria-label="Jonathan Medeiros, página inicial">Jonathan<span>.</span>dev</a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="nav-links" aria-expanded="false" hidden>Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#visao-geral">Visão geral</a></li>
+        <li><a href="#decisoes">Decisões</a></li>
+        <li><a href="#evidencias">Evidências</a></li>
+        <li><a href="#demonstracao">Captura</a></li>
+      </ul>
+      <a class="nav-action" href="../index.html#contato">Contato</a>
+    </nav>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+    <section class="section-shell case-intro" aria-labelledby="case-title">
+      <a class="project-link" href="../index.html#projetos">← Voltar aos projetos</a>
+      <p class="section-kicker">Estudo de caso · Python e qualidade de software</p>
+      <h1 id="case-title">DevCheck: evidências antes do push.</h1>
+      <p class="case-lead">Uma ferramenta para organizar verificações, entender pendências e acompanhar execuções no ambiente local.</p>
+      <p><span class="project-status">Alpha · 3.0.0a6 · repositório privado</span></p>
+      <ul class="project-tags" aria-label="Tecnologias do DevCheck">
+        <li class="project-tag">Python</li>
+        <li class="project-tag">unittest</li>
+        <li class="project-tag">coverage.py</li>
+        <li class="project-tag">Ruff</li>
+        <li class="project-tag">HTTP local</li>
+        <li class="project-tag">Server-Sent Events</li>
+        <li class="project-tag">HTML · CSS · JavaScript</li>
+        <li class="project-tag">GitHub Actions</li>
+      </ul>
+      <div class="hero-actions">
+        <a class="button primary" href="#evidencias">Consultar evidências</a>
+        <a class="button ghost" href="#demonstracao">Ver captura fictícia</a>
+      </div>
+    </section>
+
+    <section class="section-shell case-section" id="visao-geral" aria-labelledby="overview-title" tabindex="-1">
+      <p class="section-kicker">Problema e solução</p>
+      <h2 id="overview-title">Qualidade de software antes do push.</h2>
+      <div class="case-prose">
+        <p>O DevCheck é uma ferramenta em Python para reunir verificações de qualidade antes do push. Seu objetivo é organizar o retorno de testes, diagnósticos e outras checagens, mantendo visíveis o resultado, as pendências e as evidências de cada execução.</p>
+        <p>A CLI carrega uma configuração validada e executa etapas conforme o perfil escolhido. O projeto distingue falhas bloqueantes, ressalvas e erros operacionais. Cada execução pode gerar um relatório e um registro próprio, consultados por um dashboard local com histórico, logs e atualizações por eventos. A aprovação local tem o alcance da política executada; a publicação exige uma decisão separada.</p>
+        <p><strong>Tecnologias:</strong> Python, unittest, coverage.py, Ruff, HTTP local, Server-Sent Events, HTML, CSS, JavaScript e GitHub Actions.</p>
+        <p>Na validação da candidata alpha em Windows com Python 3.12, a suíte contabilizou 196 testes, sem falhas na execução final e com cinco registros de skip por restrição de symlinks. A cobertura agregada foi de aproximadamente 83%. Também passaram sete cenários da CLI e o roteiro de navegador em três larguras. Os resultados e seus limites estão descritos no <a href="#evidencias">resumo de evidências</a>.</p>
+        <p>Idealizei o DevCheck e conduzi o desenvolvimento com o Codex, usando IA em todas as etapas da implementação. Meu foco atual é compreender o código para explicar e demonstrar suas decisões técnicas.</p>
+        <p>A <a href="#demonstracao">captura do dashboard</a> mostra dados fictícios e uma aprovação com ressalvas. É uma demonstração visual, sem aplicação pública interativa. O projeto continua em avaliação; os comprovantes completos de CI permanecem privados.</p>
+      </div>
+    </section>
+
+    <section class="section-shell case-section" id="decisoes" aria-labelledby="decisions-title" tabindex="-1">
+      <p class="section-kicker">Arquitetura e decisões técnicas</p>
+      <h2 id="decisions-title">Da configuração à leitura das evidências.</h2>
+      <div class="case-grid">
+        <article class="case-panel">
+          <h3>Configuração e execução</h3>
+          <p>Uma configuração validada define o perfil e as etapas da CLI. As checagens dependem das ferramentas presentes no ambiente e da política escolhida.</p>
+        </article>
+        <article class="case-panel">
+          <h3>Resultados com significados distintos</h3>
+          <p><code>PASS</code>, <code>FAIL</code>, <code>WARN</code>, <code>SKIPPED</code> e <code>ERROR</code> distinguem aprovações, falhas, ressalvas, etapas não executadas e erros operacionais. Um skip não é uma aprovação.</p>
+        </article>
+        <article class="case-panel">
+          <h3>Relatórios e dashboard local</h3>
+          <p>Os registros de execução organizam histórico, relatórios e logs. O dashboard acompanha essas informações por HTTP local e Server-Sent Events.</p>
+        </article>
+        <article class="case-panel">
+          <h3>Decisão local e publicação</h3>
+          <p>O resultado de uma etapa alimenta a decisão da política executada. A aprovação local, a situação da CI remota e a autorização de publicação são decisões distintas.</p>
+        </article>
+      </div>
+      <p class="case-note">Minha participação: idealização e condução do desenvolvimento com o Codex, com implementação assistida por IA em todas as etapas. As capacidades do software e os resultados dos testes não equivalem a domínio individual de todo o código.</p>
+    </section>
+
+    <section class="section-shell case-section" id="evidencias" aria-labelledby="evidence-title" tabindex="-1">
+      <p class="section-kicker">Resultados e rastreabilidade</p>
+      <h2 id="evidence-title">Evidências registradas e seus limites.</h2>
+      <div class="case-prose">
+        <p>Os dados abaixo são registros da validação documentada em 18/11/2026 para a candidata alpha <code>3.0.0a6</code>. Derivam de validação local assistida pelo Codex e de consulta a resultados existentes de uma CI privada. Não representam uma nova execução nem uma auditoria externa do produto.</p>
+      </div>
+      <table class="evidence-table">
+        <caption>Validação histórica em Windows com Python 3.12.14</caption>
+        <thead><tr><th scope="col">Verificação</th><th scope="col">Resultado e alcance</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Suíte Python</th><td>196 testes contabilizados, sem falhas na execução final; cinco registros de skip por restrição de criação de symlinks.</td></tr>
+          <tr><th scope="row">Cobertura</th><td>83,0147% agregada; statements 85,02%; branches 78,13%. Os denominadores são diferentes.</td></tr>
+          <tr><th scope="row">Contratos da CLI</th><td>Sete cenários em processos separados aprovados.</td></tr>
+          <tr><th scope="row">Análise estática</th><td>Ruff aprovado na validação registrada.</td></tr>
+          <tr><th scope="row">Dashboard</th><td>Roteiro de navegador concluído com Chrome em 320, 390 e 1440 pixels.</td></tr>
+          <tr><th scope="row">CI privada</th><td>Seis jobs de validação e um agregador com sucesso registrado. Consulta a execuções existentes; comprovantes completos não estão disponíveis publicamente.</td></tr>
+        </tbody>
+      </table>
+      <div class="case-prose">
+        <p>Os cinco skips incluem três subcasos de um teste e dois outros testes, todos por falta de privilégio para criar symlinks no Windows. Eles não foram contados como aprovações; subtrair cinco de 196 não produz uma contagem válida de métodos aprovados.</p>
+        <p>A primeira tentativa teve duas falhas ligadas à localização dos diretórios temporários dentro de outra árvore Git. A execução final ajustou o ambiente de temporários e ferramentas, preservando o produto e as expectativas dos testes. O relato completo consta no documento abaixo.</p>
+        <p>A validação usou a árvore-fonte e ferramentas existentes. Não houve nova instalação limpa do produto, reconstrução do wheel ou auditoria online completa de dependências. Os comprovantes e identificadores completos permanecem privados.</p>
+      </div>
+      <a class="project-link" href="../evidencias/devcheck/relatorio-evidencias.md">Ler relatório sanitizado completo (texto)</a>
+    </section>
+
+    <section class="section-shell case-section" id="demonstracao" aria-labelledby="demo-title" tabindex="-1">
+      <p class="section-kicker">Demonstração visual estática</p>
+      <h2 id="demo-title">Dashboard com dados fictícios.</h2>
+      <p class="case-lead">A captura ilustra como o dashboard apresenta uma decisão local com ressalvas e uma pendência. Os dados e identificadores exibidos pertencem a um cenário de teste fictício.</p>
+      <figure class="case-figure">
+        <img src="../assets/devcheck-demonstracao.png" width="1440" height="1000" loading="lazy" decoding="async" alt="Dashboard local do DevCheck: execução fictícia aprovada com ressalvas, Git Check não bloqueante com falha e CI remota não verificada." />
+        <figcaption>Captura estática com dados fictícios. A tela separa decisão local, CI remota e publicação. Ela não oferece acesso ao aplicativo nem comprova resultados de um projeto real.</figcaption>
+      </figure>
+      <a class="project-link" href="../assets/devcheck-demonstracao.png">Abrir captura com dados fictícios em tamanho original</a>
+    </section>
+
+    <section class="section-shell case-section" aria-labelledby="limits-title">
+      <p class="section-kicker">Maturidade e aprendizado</p>
+      <h2 id="limits-title">Limitações e próximos passos.</h2>
+      <div class="case-prose">
+        <p>O DevCheck permanece uma candidata alpha em avaliação, com repositório privado. O material apresentado não comprova uso comercial, adoção por equipes, redução quantitativa de bugs ou operação multiusuário em produção.</p>
+        <p>Os testes de navegador registrados não substituem auditoria completa de acessibilidade, testes com tecnologias assistivas ou dispositivos físicos. A instalação limpa do produto e a compreensão individual do código exigem verificações próprias.</p>
+        <p>Meu aprendizado atual se concentra em compreender e justificar as decisões, investigar falhas e realizar pequenas alterações com testes. A condução do desenvolvimento com IA é parte explícita dessa trajetória.</p>
+      </div>
+      <div class="hero-actions">
+        <a class="button primary" href="../index.html#contato">Conversar sobre o projeto</a>
+        <a class="button ghost" href="../index.html#projetos">Explorar os outros projetos</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="../index.html" class="footer-logo">Jonathan<span>.</span>dev</a>
+    <p>© <span id="current-year">2026</span> Jonathan Medeiros.</p>
+  </footer>
+  <script src="../script.js" defer></script>
+</body>
+</html>

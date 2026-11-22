@@ -1,4 +1,9 @@
 {
+  "git": {
+    "deploymentEnabled": {
+      "codex/portfolio-publicacao-limpa-20261121": false
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",
