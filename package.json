@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "node scripts/generate-projects.mjs",
-    "check": "node --check script.js && node --check scripts/generate-projects.mjs && node --check scripts/check-integrity.mjs && node --check qa/common.cjs && node --check qa/browser.cjs && node --check qa/contrast.cjs && node scripts/generate-projects.mjs --check && node scripts/check-integrity.mjs && node --test tests/projects.test.mjs",
+    "build:public": "npm run build && node scripts/build-public.mjs",
+    "check": "node --check script.js && node --check scripts/generate-projects.mjs && node --check scripts/build-public.mjs && node --check scripts/check-integrity.mjs && node --check qa/common.cjs && node --check qa/browser.cjs && node --check qa/contrast.cjs && node scripts/generate-projects.mjs --check && node scripts/check-integrity.mjs && node --test tests/projects.test.mjs",
     "test": "node --test tests/projects.test.mjs",
     "qa:browser": "node qa/browser.cjs",
     "qa:contrast": "node qa/contrast.cjs",

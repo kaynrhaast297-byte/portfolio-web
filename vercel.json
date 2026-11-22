@@ -4,6 +4,8 @@
       "codex/portfolio-publicacao-limpa-20261121": false
     }
   },
+  "buildCommand": "npm run build:public",
+  "outputDirectory": "output/public",
   "headers": [
     {
       "source": "/(.*)",

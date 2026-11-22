@@ -15,6 +15,8 @@ npm run check
 
 `build` valida `data/projetos.json` e atualiza apenas o trecho demarcado de projetos e seu contador em `index.html`. O HTML gerado fica versionado, portanto o conteúdo principal não depende de um build em tempo de navegação. Depois de alterar o JSON ou o gerador, execute `build` e revise o diff.
 
+`npm run build:public` executa o gerador e recria `output/public` com os 12 arquivos servidos pela Vercel. O comando usa apenas Node.js e npm. `data/projetos.json` está na saída para preservar o endereço usado pela versão anterior. Os arquivos de QA e documentação de desenvolvimento permanecem acessíveis no repositório público do GitHub.
+
 `check` verifica sintaxe, sincronização entre JSON e HTML, UTF-8, integridade dos JSONs, IDs, referências ARIA, âncoras, recursos locais, proteção de links externos e a suíte de regressão do gerador. Não depende de rede. `npm test` executa somente essa suíte.
 
 A comparação de conteúdo aceita LF e CRLF. A função de atualização preserva o padrão de quebras de linha recebido, e a suíte cobre o checkout no Windows. Os campos de contato têm bordas próprias de maior contraste e placeholders com a cor de texto secundário.
@@ -29,6 +31,7 @@ A comparação de conteúdo aceita LF e CRLF. A função de atualização preser
 - `script.js`: menu mobile, datas opcionais do GitHub e preparação do email.
 - `data/projetos.json`: fonte dos quatro projetos web e dos estudos de caso privados DevCheck e CNC Copilot, com problema, solução, decisões, limitações e evidências.
 - `scripts/generate-projects.mjs`: geração determinística de HTML, validação de dados e escape do conteúdo editorial.
+- `scripts/build-public.mjs`: seleção explícita dos arquivos servidos pela Vercel.
 - `scripts/check-integrity.mjs` e `tests/projects.test.mjs`: verificações locais reproduzíveis.
 - `vercel.json` e `netlify.toml`: cabeçalhos e cache de hospedagem estática.
 - `robots.txt`, `sitemap.xml` e `portfolio.html`: descoberta e compatibilidade com o endereço antigo.

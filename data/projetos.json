@@ -20,7 +20,7 @@
       "A comparação usa os imóveis disponíveis. O README registra o escopo e as evoluções planejadas; os testes do deploy precisam de validação própria."
     ],
     "evidencias": [
-      { "rotulo": "Funcionalidades, arquitetura e testes documentados", "url": "https://github.com/kaynrhaast297-byte/imovel-sp-mvp#readme" }
+      { "rotulo": "Funcionalidades, arquitetura e testes documentados", "url": "https://github.com/kaynrhaast297-byte/imovel-sp-mvp/blob/master/README.md" }
     ]
   },
   {
@@ -126,7 +126,7 @@
       "O conteúdo técnico é um resumo; as instruções detalhadas e o histórico de evolução ficam no repositório."
     ],
     "evidencias": [
-      { "rotulo": "Estrutura e instruções do portfólio", "url": "https://github.com/kaynrhaast297-byte/portfolio-web#readme" }
+      { "rotulo": "Estrutura e instruções do portfólio", "url": "https://github.com/kaynrhaast297-byte/portfolio-web/blob/main/README.md" }
     ]
   },
   {
@@ -149,7 +149,7 @@
       "A demonstração não comprova atendimento ou integração de formulários com um serviço de envio."
     ],
     "evidencias": [
-      { "rotulo": "Código e instruções de execução do protótipo", "url": "https://github.com/kaynrhaast297-byte/projeto-star#readme" }
+      { "rotulo": "Código e instruções de execução do protótipo", "url": "https://github.com/kaynrhaast297-byte/projeto-star/blob/main/README.md" }
     ]
   },
   {
