@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CNC Copilot: estudo de caso de um protótipo privado em TypeScript e React. Revisão nominal, validações determinísticas, rastreabilidade e limites operacionais explícitos." />
+  <meta name="theme-color" content="#090909" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="CNC Copilot | Estudo de caso — Jonathan Medeiros" />
+  <meta property="og:description" content="Experiência industrial aplicada ao software: contratos, revisão de dados, evidências e bloqueios em um protótipo de estudo para torno CNC." />
+  <meta property="og:url" content="https://portfolio-web-five-rouge.vercel.app/projetos/cnc-copilot.html" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="canonical" href="https://portfolio-web-five-rouge.vercel.app/projetos/cnc-copilot.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&amp;family=DM+Mono:ital,wght@0,400;1,400&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <title>CNC Copilot | Estudo de caso — Jonathan Medeiros</title>
+</head>
+<body class="case-study">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header" id="topo">
+    <nav class="nav" aria-label="Navegação do estudo de caso">
+      <a href="../index.html" class="nav-logo" aria-label="Jonathan Medeiros, página inicial">Jonathan<span>.</span>dev</a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="nav-links" aria-expanded="false" hidden>Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#visao-geral">Visão geral</a></li>
+        <li><a href="#arquitetura">Arquitetura</a></li>
+        <li><a href="#evidencias">Evidências</a></li>
+        <li><a href="#limites">Limites</a></li>
+      </ul>
+      <a class="nav-action" href="../index.html#contato">Contato</a>
+    </nav>
+  </header>
+  <main id="conteudo" tabindex="-1">
+    <section class="section-shell case-intro" aria-labelledby="case-title">
+      <a class="project-link" href="../index.html#projetos">← Voltar aos projetos</a>
+      <p class="section-kicker">Estudo de caso · Indústria e engenharia de software</p>
+      <h1 id="case-title">CNC Copilot: revisão nominal com evidências.</h1>
+      <p class="case-lead">Minha experiência industrial orienta um protótipo para organizar informações, identificar inconsistências e manter explícito o que ainda precisa de confirmação.</p>
+      <p><span class="project-status">Protótipo · privado</span></p>
+      <p class="case-lead">Projeto em desenvolvimento, sem homologação para fabricação ou operação de máquina.</p>
+      <ul class="project-tags" aria-label="Tecnologias do CNC Copilot">
+        <li class="project-tag">TypeScript</li><li class="project-tag">React</li><li class="project-tag">Zod</li><li class="project-tag">Node.js</li><li class="project-tag">Vite</li>
+      </ul>
+      <div class="hero-actions">
+        <a class="button primary" href="#arquitetura">Entender a arquitetura</a>
+        <a class="button ghost" href="#evidencias">Consultar evidências</a>
+      </div>
+    </section>
+
+    <section class="section-shell case-section" id="visao-geral" aria-labelledby="overview-title" tabindex="-1">
+      <p class="section-kicker">Problema e solução</p>
+      <h2 id="overview-title">Dar contexto aos dados antes de decidir.</h2>
+      <div class="case-prose">
+        <p>Uma descrição de operação pode conter dados ausentes, referências ambíguas ou informações incompatíveis com o desenho. Para revisar esse material, é necessário distinguir o que foi declarado, de onde veio cada valor e a qual ordem de serviço, peça e revisão ele pertence.</p>
+        <p>O CNC Copilot explora esse problema em um protótipo para torno CNC de dois eixos. A interface em React e TypeScript organiza a revisão; contratos com Zod e regras determinísticas verificam dados e registram bloqueios. O recorte atual inclui comparação nominal com referências documentais fictícias e invalidação de resultados anteriores quando o contexto muda.</p>
+        <p>Na versão conferida, a extração de solicitações é determinística e limitada. O frontend não chama uma API de IA. A assistência de IA foi utilizada durante o desenvolvimento, sob minha condução.</p>
+        <p>Idealizei o projeto e conduzi seu desenvolvimento com o Codex, usando IA em todas as etapas da implementação. A documentação deste software não representa autoria manual integral nem domínio individual de todo o código.</p>
+      </div>
+    </section>
+
+    <section class="section-shell case-section" id="arquitetura" aria-labelledby="architecture-title" tabindex="-1">
+      <p class="section-kicker">Arquitetura e decisões verificadas</p>
+      <h2 id="architecture-title">Da proposta textual à revisão rastreável.</h2>
+      <div class="case-grid">
+        <article class="case-panel">
+          <p class="section-kicker">01 · Entrada</p><h3>Preservar o que foi informado</h3>
+          <p>A extração limitada mantém os trechos e a origem dos dados. Informações ausentes ou ambíguas permanecem visíveis, sem serem promovidas automaticamente a fatos confirmados.</p>
+        </article>
+        <article class="case-panel">
+          <p class="section-kicker">02 · Contratos</p><h3>Separar papéis e referências</h3>
+          <p>Esquemas tipados distinguem proposta do parser, declaração humana e referência documental. A comparação exige vínculo com o contexto correto e uma fonte documental específica.</p>
+        </article>
+        <article class="case-panel">
+          <p class="section-kicker">03 · Regras</p><h3>Explicitar divergências e bloqueios</h3>
+          <p>Regras determinísticas verificam ausências, unidades, escopo e coerência nominal. Uma tolerância registrada como contexto não apaga uma divergência nominal entre declaração e documento.</p>
+        </article>
+        <article class="case-panel">
+          <p class="section-kicker">04 · Revisão</p><h3>Reavaliar quando os dados mudam</h3>
+          <p>Impressões digitais dos dados vinculam a avaliação ao seu contexto. Alterações na declaração, referência, revisão, máquina, setup ou ferramenta exigem uma nova avaliação.</p>
+        </article>
+      </div>
+      <p class="case-note">Uma comparação nominal consistente é um resultado de software. No recorte verificado, as sete permissões operacionais permanecem bloqueadas, incluindo pós-processamento, exportação NC e execução.</p>
+    </section>
+
+    <section class="section-shell case-section" id="evidencias" aria-labelledby="evidence-title" tabindex="-1">
+      <p class="section-kicker">Verificação de software · 21/11/2026</p>
+      <h2 id="evidence-title">Resultados reproduzidos e alcance declarado.</h2>
+      <div class="case-prose">
+        <p>O gate de software foi reproduzido pelo Codex em uma cópia isolada da versão local indicada pelo titular, incluindo alterações ainda em desenvolvimento. A fonte original foi preservada. Não houve conexão com máquina, abertura de VM, execução de programa CNC ou chamada a API de IA.</p>
+      </div>
+      <table class="evidence-table">
+        <caption>Validação de software em Windows, com Node.js 24.16.0</caption>
+        <thead><tr><th scope="col">Verificação</th><th scope="col">Resultado e alcance</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Testes automatizados</th><td>1.300 testes aprovados; zero falhas, cancelamentos e skips na execução registrada.</td></tr>
+          <tr><th scope="row">Contratos e tipos</th><td>Verificação TypeScript e políticas estáticas aprovadas. As políticas restringem SDKs e chaves de IA, parser legado e blocos de programa CNC no frontend.</td></tr>
+          <tr><th scope="row">Build</th><td>Build Vite concluído; houve aviso de chunk acima de 500 kB. Desempenho em produção não foi homologado.</td></tr>
+          <tr><th scope="row">Revisão documental</th><td>Regressões cobrem origem dos dados, contexto, divergências nominais, dados ausentes e invalidação de avaliações anteriores.</td></tr>
+          <tr><th scope="row">Bloqueios operacionais</th><td>Os contratos testados mantêm as sete permissões falsas, inclusive quando os dados nominais coincidem.</td></tr>
+        </tbody>
+      </table>
+      <div class="case-prose">
+        <p>Os resultados demonstram comportamentos do software nos cenários testados. A fonte, os logs completos e os dados de trabalho permanecem privados; este resumo sanitizado não permite uma auditoria pública integral nem comprova segurança física ou domínio individual.</p>
+      </div>
+      <a class="project-link" href="../evidencias/cnc-copilot/relatorio-evidencias.md">Ler relatório sanitizado de software (texto)</a>
+    </section>
+
+    <section class="section-shell case-section" id="limites" aria-labelledby="limits-title" tabindex="-1">
+      <p class="section-kicker">Riscos e maturidade</p>
+      <h2 id="limits-title">Um protótipo de estudo com limites explícitos.</h2>
+      <div class="case-prose">
+        <p>O projeto não está concluído nem homologado para fabricação. Cálculos nominais, testes automatizados, um cadastro preenchido ou uma prévia gráfica não comprovam fixação, dinâmica, ausência de colisões 3D ou uma condição real de máquina.</p>
+        <p>Dados de catálogo não substituem a verificação da configuração física. A confirmação de campos na interface também não concede autorização operacional. A revisão e as validações físicas necessárias continuam fora do escopo demonstrado aqui.</p>
+        <p>Este portfólio apresenta arquitetura e evidências de software. Não disponibiliza programa CNC, arquivo NC, instrução de operação ou demonstração interativa. Os ensaios históricos citados na documentação privada não foram repetidos nesta revisão.</p>
+        <p>Meu foco de aprendizado é compreender os contratos, explicar os bloqueios, investigar divergências e distinguir evidência documental de autorização operacional.</p>
+      </div>
+      <div class="hero-actions">
+        <a class="button primary" href="../index.html#contato">Conversar sobre o projeto</a>
+        <a class="button ghost" href="../index.html#projetos">Explorar os outros projetos</a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <a href="../index.html" class="footer-logo">Jonathan<span>.</span>dev</a>
+    <p>© <span id="current-year">2026</span> Jonathan Medeiros.</p>
+  </footer>
+  <script src="../script.js" defer></script>
+</body>
+</html>

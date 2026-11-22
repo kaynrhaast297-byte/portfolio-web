@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfólio de Jonathan Medeiros, desenvolvedor web em formação com projetos em HTML, CSS, JavaScript, React, Next.js, Supabase e dashboards." />
+  <meta name="description" content="Jonathan Medeiros: desenvolvimento web, Python, backend e automação. Experiência industrial, formação em ADS e projetos com decisões técnicas e evidências para oportunidades de estágio e júnior." />
   <meta name="theme-color" content="#090909" />
   <meta name="robots" content="index, follow" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
-  <meta property="og:title" content="Jonathan Medeiros | Desenvolvedor Web" />
-  <meta property="og:description" content="Projetos reais, interfaces responsivas e evolução prática em React, Next.js, Supabase e JavaScript." />
+  <meta property="og:title" content="Jonathan Medeiros | Desenvolvimento Web e Python" />
+  <meta property="og:description" content="Da experiência industrial ao software: aplicações web, Python, automação e qualidade, com decisões técnicas e limitações explícitas." />
   <meta property="og:url" content="https://portfolio-web-five-rouge.vercel.app/" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Jonathan Medeiros | Desenvolvedor Web" />
-  <meta name="twitter:description" content="Portfólio com projetos web, dashboards e sistemas em evolução." />
+  <meta name="twitter:title" content="Jonathan Medeiros | Desenvolvimento Web e Python" />
+  <meta name="twitter:description" content="Projetos web, Python e automação. Conheça os problemas, as soluções e as evidências de cada projeto." />
   <link rel="canonical" href="https://portfolio-web-five-rouge.vercel.app/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:ital,wght@0,400;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./style.css" />
-  <title>Jonathan Medeiros | Desenvolvedor Web</title>
+  <title>Jonathan Medeiros | Desenvolvimento Web e Python</title>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -27,7 +27,8 @@
   <header class="site-header" id="topo">
     <nav class="nav" aria-label="Navegação principal">
       <a href="#topo" class="nav-logo" aria-label="Jonathan Medeiros, página inicial">Jonathan<span>.</span>dev</a>
-      <ul class="nav-links">
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="nav-links" aria-expanded="false" hidden>Menu</button>
+      <ul class="nav-links" id="nav-links">
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#projetos">Projetos</a></li>
         <li><a href="#processo">Processo</a></li>
@@ -37,14 +38,14 @@
     </nav>
   </header>
 
-  <main id="conteudo">
+  <main id="conteudo" tabindex="-1">
     <section class="hero section-shell" aria-labelledby="hero-title">
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-content">
-        <p class="eyebrow">Desenvolvedor Web em formação</p>
-        <h1 id="hero-title">Construo interfaces claras, responsivas e prontas para evoluir.</h1>
+        <p class="eyebrow">Desenvolvedor em formação · Web e Python</p>
+        <h1 id="hero-title">Software para resolver problemas reais.</h1>
         <p class="hero-copy">
-          Sou Jonathan Medeiros. Estou buscando oportunidades de estágio ou júnior para transformar prática em entrega real, com foco em HTML, CSS, JavaScript, React, Next.js e Supabase.
+          Sou Jonathan Medeiros. Conecto minha experiência industrial e minha formação em Análise e Desenvolvimento de Sistemas a aplicações web, backend e automação com Python. Busco uma oportunidade de estágio ou uma vaga como desenvolvedor júnior para contribuir, aprender e evoluir em equipe.
         </p>
         <div class="hero-actions">
           <a class="button primary" href="#projetos">
@@ -69,62 +70,217 @@
         </div>
         <dl class="metrics-grid">
           <div>
-            <dt>Projetos</dt>
-            <dd id="metric-projects">4</dd>
+            <dt>Projetos selecionados</dt>
+            <dd id="metric-projects">6</dd>
           </div>
           <div>
-            <dt>Stacks</dt>
-            <dd>8</dd>
+            <dt>Formação</dt>
+            <dd>ADS</dd>
           </div>
           <div>
-            <dt>Deploy</dt>
-            <dd>Vercel</dd>
+            <dt>Objetivo</dt>
+            <dd>Estágio / Jr.</dd>
           </div>
         </dl>
-        <div class="skill-strip" aria-label="Tecnologias principais">
-          <span>HTML</span>
-          <span>CSS</span>
-          <span>JavaScript</span>
-          <span>React</span>
-          <span>Next.js</span>
-          <span>Supabase</span>
-        </div>
+        <ul class="skill-strip" aria-label="Tecnologias principais">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>React</li>
+          <li>Next.js</li>
+          <li>Supabase</li>
+          <li>Python</li>
+        </ul>
       </aside>
     </section>
 
-    <section class="section-shell about" id="sobre" aria-labelledby="about-title">
+    <section class="section-shell about" id="sobre" aria-labelledby="about-title" tabindex="-1">
       <div>
         <p class="section-kicker">Sobre</p>
-        <h2 id="about-title">Aprendizado com projeto publicado, não só teoria.</h2>
+        <h2 id="about-title">Da experiência industrial à construção de software.</h2>
       </div>
       <div class="about-copy">
         <p>
-          Minha base está em desenvolvimento web moderno: semântica, responsividade, consumo de dados, deploy, versionamento e organização de projetos.
+          Minha experiência industrial orienta meu interesse por processos, precisão e resolução de problemas. Na formação em Análise e Desenvolvimento de Sistemas, conecto essa vivência à lógica de programação, aos dados e à organização de sistemas.
         </p>
         <p>
-          O foco agora é entrar em um time onde eu possa aprender rápido, receber feedback e contribuir em tarefas reais com disciplina, comunicação e cuidado com qualidade.
+          Desenvolvo projetos com HTML, CSS, JavaScript, React, Next.js e Supabase, e aprofundo Python, backend, automação e qualidade de software. Quero contribuir em um time com disciplina, comunicação, abertura a feedback e disposição para aprender.
+        </p>
+        <p>
+          Uso IA como apoio para estudar, explorar alternativas e desenvolver. A revisão do código, a validação do comportamento e a explicação das decisões fazem parte da minha responsabilidade. Diferencio o que foi verificado do que ainda precisa de evidência.
         </p>
       </div>
     </section>
 
-    <section class="section-shell projects" id="projetos" aria-labelledby="projects-title">
+    <section class="section-shell projects" id="projetos" aria-labelledby="projects-title" tabindex="-1">
       <div class="section-heading">
         <p class="section-kicker">Projetos selecionados</p>
         <h2 id="projects-title">Evidências práticas para recrutadores.</h2>
-        <p>Os cards abaixo carregam dados locais e, quando possível, enriquecem informações públicas do GitHub.</p>
+        <p>Conheça as demonstrações e o código disponíveis, ou explore o estudo de caso e as evidências para entender as decisões e os limites de cada projeto.</p>
       </div>
 
-      <div id="projects-container" class="projects-grid" aria-live="polite">
-        <div class="loading-state">
-          <span></span>
-          <span></span>
-          <span></span>
-          <p>Carregando projetos</p>
-        </div>
+      <div id="projects-container" class="projects-grid">
+        <!-- projects:start -->
+        <article class="project-card" id="projeto-imovelsp" aria-labelledby="titulo-imovelsp">
+          <div class="project-head">
+            <span class="project-index">Projeto 01</span>
+            <span class="project-status">MVP em evolução</span>
+          </div>
+          <div>
+            <p class="project-type">Full-stack</p>
+            <h3 class="project-title" id="titulo-imovelsp">ImovelSP — Sistema Imobiliário</h3>
+            <p class="project-desc">MVP para explorar imóveis em São Paulo e comparar preços, com busca, filtros, detalhes e fluxo de contato.</p>
+            <ul class="project-tags" aria-label="Tecnologias de ImovelSP — Sistema Imobiliário"><li class="project-tag">Next.js</li><li class="project-tag">Supabase</li><li class="project-tag">TypeScript</li><li class="project-tag">Tailwind</li></ul>
+          </div>
+          <div class="project-footer">
+            <div class="project-actions"><a class="project-link" href="https://imovel-sp-mvp.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Ver demonstração: ImovelSP — Sistema Imobiliário (nova aba)">Ver demonstração</a><a class="project-link" href="https://github.com/kaynrhaast297-byte/imovel-sp-mvp" target="_blank" rel="noopener noreferrer" aria-label="Ver código: ImovelSP — Sistema Imobiliário (nova aba)">Ver código</a></div>
+            <details class="project-details">
+              <summary>Detalhes técnicos<span class="sr-only"> de ImovelSP — Sistema Imobiliário</span></summary>
+              <dl class="project-facts">
+                <div><dt>Problema</dt><dd>Facilitar a comparação de imóveis e organizar informações de preço, localização e características durante a busca.</dd></div>
+                <div><dt>Solução</dt><dd>Aplicação com busca paginada, filtros, página de imóvel, comparação de preços, formulário de contato e rotas de API documentadas no repositório.</dd></div>
+                <div><dt>Decisões técnicas</dt><dd><ul><li>Next.js e TypeScript para organizar páginas, componentes e rotas de API.</li><li>Supabase/PostgreSQL para persistência e regras de acesso; operações administrativas passam pelo backend.</li><li>Validação com Zod e testes automatizados documentados no repositório.</li></ul></dd></div>
+                <div><dt>Limitações</dt><dd><ul><li>MVP com funcionalidades e integrações dependentes dos dados e da configuração do ambiente.</li><li>A comparação usa os imóveis disponíveis. O README registra o escopo e as evoluções planejadas; os testes do deploy precisam de validação própria.</li></ul></dd></div>
+                <div><dt>Evidências</dt><dd class="project-evidence"><a class="project-link" href="https://github.com/kaynrhaast297-byte/imovel-sp-mvp/blob/master/README.md" target="_blank" rel="noopener noreferrer" aria-label="Funcionalidades, arquitetura e testes documentados: ImovelSP — Sistema Imobiliário (nova aba)">Funcionalidades, arquitetura e testes documentados</a></dd></div>
+              </dl>
+            </details>
+            <p class="project-update" data-github-repo="imovel-sp-mvp">Código disponível no GitHub.</p>
+          </div>
+        </article>
+        <article class="project-card" id="projeto-devcheck" aria-labelledby="titulo-devcheck">
+          <div class="project-head">
+            <span class="project-index">Projeto 02</span>
+            <span class="project-status">Alpha · privado</span>
+          </div>
+          <div>
+            <p class="project-type">Python · Automação e qualidade</p>
+            <h3 class="project-title" id="titulo-devcheck">DevCheck</h3>
+            <p class="project-desc">Automação de verificações de qualidade em Python, com CLI, relatórios e dashboard local. Projeto alpha privado, idealizado e conduzido por mim, com IA em todas as etapas da implementação.</p>
+            <ul class="project-tags" aria-label="Tecnologias de DevCheck"><li class="project-tag">Python</li><li class="project-tag">unittest</li><li class="project-tag">Ruff</li><li class="project-tag">CLI</li><li class="project-tag">SSE</li></ul>
+          </div>
+          <div class="project-footer">
+            <div class="project-actions"><a class="project-link" href="./projetos/devcheck.html" aria-label="Ver estudo de caso: DevCheck">Ver estudo de caso</a></div>
+            <details class="project-details">
+              <summary>Detalhes técnicos<span class="sr-only"> de DevCheck</span></summary>
+              <dl class="project-facts">
+                <div><dt>Problema</dt><dd>Reunir verificações e suas evidências antes do push, distinguindo falhas bloqueantes, ressalvas e erros operacionais.</dd></div>
+                <div><dt>Solução</dt><dd>CLI com configuração validada, perfis de checagem e relatórios estruturados, acompanhados por um dashboard local com histórico e logs.</dd></div>
+                <div><dt>Decisões técnicas</dt><dd><ul><li>Separar o resultado de cada verificação da decisão da política local e da autorização de publicação.</li><li>Registrar execuções e expor seu acompanhamento em um dashboard local, com atualizações por Server-Sent Events.</li><li>Apresentar evidências históricas com versão, ambiente e limitações, mantendo os comprovantes privados fora do site.</li></ul></dd></div>
+                <div><dt>Limitações</dt><dd><ul><li>Candidata alpha 3.0.0a6 em avaliação. O código e os comprovantes completos de CI permanecem privados.</li><li>A captura usa dados fictícios; não há demonstração interativa pública. Os resultados registrados não comprovam domínio individual de todo o código.</li><li>As checagens dependem das ferramentas e da política configuradas. A aprovação local exige uma decisão separada para publicação.</li></ul></dd></div>
+                <div><dt>Evidências</dt><dd class="project-evidence"><a class="project-link" href="./projetos/devcheck.html#evidencias" aria-label="Resultados e limites registrados: DevCheck">Resultados e limites registrados</a><a class="project-link" href="./evidencias/devcheck/relatorio-evidencias.md" aria-label="Relatório sanitizado (texto): DevCheck">Relatório sanitizado (texto)</a><a class="project-link" href="./assets/devcheck-demonstracao.png" aria-label="Captura com dados fictícios: DevCheck">Captura com dados fictícios</a></dd></div>
+              </dl>
+            </details>
+          </div>
+        </article>
+        <article class="project-card" id="projeto-cnc-copilot" aria-labelledby="titulo-cnc-copilot">
+          <div class="project-head">
+            <span class="project-index">Projeto 03</span>
+            <span class="project-status">Protótipo · privado</span>
+          </div>
+          <div>
+            <p class="project-type">Indústria · Validação de software</p>
+            <h3 class="project-title" id="titulo-cnc-copilot">CNC Copilot</h3>
+            <p class="project-desc">Protótipo em TypeScript e React para revisar dados nominais e rastrear inconsistências em estudos de torno CNC. Idealizado e conduzido por mim, com IA em toda a implementação.</p>
+            <ul class="project-tags" aria-label="Tecnologias de CNC Copilot"><li class="project-tag">TypeScript</li><li class="project-tag">React</li><li class="project-tag">Zod</li><li class="project-tag">Node.js</li><li class="project-tag">Vite</li></ul>
+          </div>
+          <div class="project-footer">
+            <div class="project-actions"><a class="project-link" href="./projetos/cnc-copilot.html" aria-label="Ver estudo de caso: CNC Copilot">Ver estudo de caso</a></div>
+            <details class="project-details">
+              <summary>Detalhes técnicos<span class="sr-only"> de CNC Copilot</span></summary>
+              <dl class="project-facts">
+                <div><dt>Problema</dt><dd>Organizar dados de ordem de serviço, desenho, máquina e setup sem confundir informações propostas ou cálculos nominais com autorização operacional.</dd></div>
+                <div><dt>Solução</dt><dd>Interface de revisão com contratos tipados, extração determinística limitada, referências documentais rastreáveis e regras para explicitar ausências, divergências e bloqueios.</dd></div>
+                <div><dt>Decisões técnicas</dt><dd><ul><li>Separar proposta extraída, declaração humana e referência documental; cada informação preserva sua origem.</li><li>Invalidar avaliações anteriores quando os dados ou o escopo de revisão mudam.</li><li>Manter a comparação nominal separada das permissões de planejamento operacional, exportação e execução.</li></ul></dd></div>
+                <div><dt>Limitações</dt><dd><ul><li>Protótipo privado em desenvolvimento, sem homologação para fabricação ou operação de máquina.</li><li>Testes de software e build não comprovam segurança física, fixação, dinâmica ou ausência de colisões 3D.</li><li>Sem demonstração interativa pública ou código CNC operacional neste portfólio. As sete permissões permanecem bloqueadas no recorte verificado.</li></ul></dd></div>
+                <div><dt>Evidências</dt><dd class="project-evidence"><a class="project-link" href="./projetos/cnc-copilot.html#arquitetura" aria-label="Arquitetura e decisões verificadas: CNC Copilot">Arquitetura e decisões verificadas</a><a class="project-link" href="./evidencias/cnc-copilot/relatorio-evidencias.md" aria-label="Relatório sanitizado de software: CNC Copilot">Relatório sanitizado de software</a><a class="project-link" href="./projetos/cnc-copilot.html#limites" aria-label="Escopo e bloqueios operacionais: CNC Copilot">Escopo e bloqueios operacionais</a></dd></div>
+              </dl>
+            </details>
+          </div>
+        </article>
+        <article class="project-card" id="projeto-portfolio" aria-labelledby="titulo-portfolio">
+          <div class="project-head">
+            <span class="project-index">Projeto 04</span>
+            <span class="project-status">Em evolução</span>
+          </div>
+          <div>
+            <p class="project-type">Front-end</p>
+            <h3 class="project-title" id="titulo-portfolio">Portfólio Pessoal</h3>
+            <p class="project-desc">Apresentação profissional com projetos, código e contexto técnico para oportunidades de estágio e desenvolvedor júnior.</p>
+            <ul class="project-tags" aria-label="Tecnologias de Portfólio Pessoal"><li class="project-tag">HTML</li><li class="project-tag">CSS</li><li class="project-tag">JavaScript</li></ul>
+          </div>
+          <div class="project-footer">
+            <div class="project-actions"><a class="project-link" href="https://portfolio-web-five-rouge.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Ver demonstração: Portfólio Pessoal (nova aba)">Ver demonstração</a><a class="project-link" href="https://github.com/kaynrhaast297-byte/portfolio-web" target="_blank" rel="noopener noreferrer" aria-label="Ver código: Portfólio Pessoal (nova aba)">Ver código</a></div>
+            <details class="project-details">
+              <summary>Detalhes técnicos<span class="sr-only"> de Portfólio Pessoal</span></summary>
+              <dl class="project-facts">
+                <div><dt>Problema</dt><dd>Permitir que recrutadores conheçam meu perfil e encontrem evidências dos projetos sem depender de serviços externos para acessar o conteúdo principal.</dd></div>
+                <div><dt>Solução</dt><dd>Página estática com navegação por seções, projetos disponíveis no HTML e links distintos para demonstração, código e detalhes técnicos.</dd></div>
+                <div><dt>Decisões técnicas</dt><dd><ul><li>HTML semântico e CSS responsivo preservam uma estrutura simples e acessível.</li><li>Um gerador local transforma o JSON dos projetos em HTML; o GitHub atualiza apenas informações opcionais em segundo plano.</li><li>O formulário prepara um email para que a pessoa conclua o envio no próprio aplicativo.</li></ul></dd></div>
+                <div><dt>Limitações</dt><dd><ul><li>O contato por formulário depende de um aplicativo compatível com links de email.</li><li>O conteúdo técnico é um resumo; as instruções detalhadas e o histórico de evolução ficam no repositório.</li></ul></dd></div>
+                <div><dt>Evidências</dt><dd class="project-evidence"><a class="project-link" href="https://github.com/kaynrhaast297-byte/portfolio-web/blob/main/README.md" target="_blank" rel="noopener noreferrer" aria-label="Estrutura e instruções do portfólio: Portfólio Pessoal (nova aba)">Estrutura e instruções do portfólio</a></dd></div>
+              </dl>
+            </details>
+            <p class="project-update" data-github-repo="portfolio-web">Código disponível no GitHub.</p>
+          </div>
+        </article>
+        <article class="project-card" id="projeto-star" aria-labelledby="titulo-star">
+          <div class="project-head">
+            <span class="project-index">Projeto 05</span>
+            <span class="project-status">Protótipo</span>
+          </div>
+          <div>
+            <p class="project-type">Front-end</p>
+            <h3 class="project-title" id="titulo-star">Projeto Star</h3>
+            <p class="project-desc">Protótipo de página institucional para o setor industrial, com catálogo de produtos, serviços e apresentação da empresa.</p>
+            <ul class="project-tags" aria-label="Tecnologias de Projeto Star"><li class="project-tag">Next.js</li><li class="project-tag">TypeScript</li><li class="project-tag">Tailwind</li></ul>
+          </div>
+          <div class="project-footer">
+            <div class="project-actions"><a class="project-link" href="https://projeto-star-tau.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Ver demonstração: Projeto Star (nova aba)">Ver demonstração</a><a class="project-link" href="https://github.com/kaynrhaast297-byte/projeto-star" target="_blank" rel="noopener noreferrer" aria-label="Ver código: Projeto Star (nova aba)">Ver código</a></div>
+            <details class="project-details">
+              <summary>Detalhes técnicos<span class="sr-only"> de Projeto Star</span></summary>
+              <dl class="project-facts">
+                <div><dt>Problema</dt><dd>Organizar a apresentação de produtos e serviços industriais em uma experiência de navegação clara.</dd></div>
+                <div><dt>Solução</dt><dd>Página institucional com seções de produtos, diferenciais e contato, voltada à exploração de composição visual e responsividade.</dd></div>
+                <div><dt>Decisões técnicas</dt><dd><ul><li>Next.js e TypeScript para estruturar a aplicação.</li><li>Tailwind para compor os estilos e manter consistência entre as seções.</li></ul></dd></div>
+                <div><dt>Limitações</dt><dd><ul><li>Protótipo de apresentação. Contatos, formulários e metadados precisam ser revisados antes de uso comercial.</li><li>A demonstração não comprova atendimento ou integração de formulários com um serviço de envio.</li></ul></dd></div>
+                <div><dt>Evidências</dt><dd class="project-evidence"><a class="project-link" href="https://github.com/kaynrhaast297-byte/projeto-star/blob/main/README.md" target="_blank" rel="noopener noreferrer" aria-label="Código e instruções de execução do protótipo: Projeto Star (nova aba)">Código e instruções de execução do protótipo</a></dd></div>
+              </dl>
+            </details>
+            <p class="project-update" data-github-repo="projeto-star">Código disponível no GitHub.</p>
+          </div>
+        </article>
+        <article class="project-card" id="projeto-growthlens" aria-labelledby="titulo-growthlens">
+          <div class="project-head">
+            <span class="project-index">Projeto 06</span>
+            <span class="project-status">Demonstração</span>
+          </div>
+          <div>
+            <p class="project-type">Dashboard</p>
+            <h3 class="project-title" id="titulo-growthlens">GrowthLens Dashboard</h3>
+            <p class="project-desc">Painel estático para explorar a apresentação de indicadores, crescimento e presença digital.</p>
+            <ul class="project-tags" aria-label="Tecnologias de GrowthLens Dashboard"><li class="project-tag">HTML</li><li class="project-tag">CSS</li><li class="project-tag">JavaScript</li><li class="project-tag">Chart.js</li></ul>
+          </div>
+          <div class="project-footer">
+            <div class="project-actions"><a class="project-link" href="https://growthlens-dashboard.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Ver demonstração: GrowthLens Dashboard (nova aba)">Ver demonstração</a><a class="project-link" href="https://github.com/kaynrhaast297-byte/growthlens-dashboard" target="_blank" rel="noopener noreferrer" aria-label="Ver código: GrowthLens Dashboard (nova aba)">Ver código</a></div>
+            <details class="project-details">
+              <summary>Detalhes técnicos<span class="sr-only"> de GrowthLens Dashboard</span></summary>
+              <dl class="project-facts">
+                <div><dt>Problema</dt><dd>Apresentar indicadores e comparações de forma compreensível em uma interface de leitura rápida.</dd></div>
+                <div><dt>Solução</dt><dd>Página com painéis, gráficos, seções de crescimento e casos ilustrativos, acessível em uma demonstração pública.</dd></div>
+                <div><dt>Decisões técnicas</dt><dd><ul><li>HTML, CSS e JavaScript para uma aplicação estática.</li><li>Chart.js para visualização de indicadores e navegação por seções para organizar a leitura.</li></ul></dd></div>
+                <div><dt>Limitações</dt><dd><ul><li>Conteúdo demonstrativo; os casos ilustrativos não representam resultados comerciais comprovados.</li><li>Integração com fontes reais de métricas não foi verificada. Alguns links de projeto da demonstração retornam ao portfólio.</li></ul></dd></div>
+                <div><dt>Evidências</dt><dd class="project-evidence"><a class="project-link" href="https://github.com/kaynrhaast297-byte/growthlens-dashboard" target="_blank" rel="noopener noreferrer" aria-label="Arquivos-fonte do painel: GrowthLens Dashboard (nova aba)">Arquivos-fonte do painel</a></dd></div>
+              </dl>
+            </details>
+            <p class="project-update" data-github-repo="growthlens-dashboard">Código disponível no GitHub.</p>
+          </div>
+        </article>
+        <!-- projects:end -->
       </div>
+
     </section>
 
-    <section class="section-shell process" id="processo" aria-labelledby="process-title">
+    <section class="section-shell process" id="processo" aria-labelledby="process-title" tabindex="-1">
       <div class="section-heading">
         <p class="section-kicker">Como trabalho</p>
         <h2 id="process-title">Organização simples, entrega visível.</h2>
@@ -137,18 +293,18 @@
         </article>
         <article>
           <span>02</span>
-          <h3>Construo pequeno</h3>
-          <p>Faço uma versão funcional, testo comportamento essencial e evoluo sem esconder complexidade.</p>
+          <h3>Construo e reviso</h3>
+          <p>Divido o trabalho em partes, uso IA como apoio quando faz sentido e reviso o código e as decisões antes de avançar.</p>
         </article>
         <article>
           <span>03</span>
-          <h3>Melhoro com métrica</h3>
-          <p>Reviso responsividade, acessibilidade, performance, segurança básica e clareza do código.</p>
+          <h3>Valido e documento</h3>
+          <p>Verifico os fluxos essenciais, registro os testes e explicito limitações. Uso o resultado para orientar a próxima melhoria.</p>
         </article>
       </div>
     </section>
 
-    <section class="section-shell contact" id="contato" aria-labelledby="contact-title">
+    <section class="section-shell contact" id="contato" aria-labelledby="contact-title" tabindex="-1">
       <div>
         <p class="section-kicker">Contato</p>
         <h2 id="contact-title">Vamos conversar sobre a vaga?</h2>
@@ -162,7 +318,8 @@
         </div>
       </div>
 
-      <form class="contact-form" id="contact-form">
+      <noscript><p>Para entrar em contato, use os links de email, GitHub ou LinkedIn acima.</p></noscript>
+      <form class="contact-form" id="contact-form" aria-describedby="form-status" hidden>
         <div class="form-row">
           <label for="nome">Nome</label>
           <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Seu nome" required />
@@ -176,12 +333,13 @@
           <textarea id="mensagem" name="mensagem" rows="5" placeholder="Conte rapidamente sobre a oportunidade" required></textarea>
         </div>
         <button class="button primary form-submit" type="submit">
-          Abrir email
+          Preparar email
           <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none">
             <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
-        <p class="form-note" id="form-status" role="status">O formulário abre seu aplicativo de email com a mensagem preenchida.</p>
+        <a class="button ghost contact-draft" id="contact-email-link" hidden>Continuar no email</a>
+        <p class="form-note" id="form-status" role="status">Prepare a mensagem para continuar no seu aplicativo de email. Você conclui o envio por lá.</p>
       </form>
     </section>
   </main>

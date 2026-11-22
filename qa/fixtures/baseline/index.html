@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfólio de Jonathan Medeiros, desenvolvedor web em formação com projetos em HTML, CSS, JavaScript, React, Next.js, Supabase e dashboards." />
+  <meta name="theme-color" content="#090909" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="Jonathan Medeiros | Desenvolvedor Web" />
+  <meta property="og:description" content="Projetos reais, interfaces responsivas e evolução prática em React, Next.js, Supabase e JavaScript." />
+  <meta property="og:url" content="https://portfolio-web-five-rouge.vercel.app/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Jonathan Medeiros | Desenvolvedor Web" />
+  <meta name="twitter:description" content="Portfólio com projetos web, dashboards e sistemas em evolução." />
+  <link rel="canonical" href="https://portfolio-web-five-rouge.vercel.app/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:ital,wght@0,400;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+  <title>Jonathan Medeiros | Desenvolvedor Web</title>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header" id="topo">
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#topo" class="nav-logo" aria-label="Jonathan Medeiros, página inicial">Jonathan<span>.</span>dev</a>
+      <ul class="nav-links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#processo">Processo</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+      <a class="nav-action" href="mailto:kaynrhaast297@gmail.com">Email</a>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero section-shell" aria-labelledby="hero-title">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Desenvolvedor Web em formação</p>
+        <h1 id="hero-title">Construo interfaces claras, responsivas e prontas para evoluir.</h1>
+        <p class="hero-copy">
+          Sou Jonathan Medeiros. Estou buscando oportunidades de estágio ou júnior para transformar prática em entrega real, com foco em HTML, CSS, JavaScript, React, Next.js e Supabase.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#projetos">
+            Ver projetos
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a class="button ghost" href="https://github.com/kaynrhaast297-byte" target="_blank" rel="noopener noreferrer">
+            GitHub
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero-panel" aria-label="Resumo profissional">
+        <div class="panel-topline">
+          <span>Status</span>
+          <strong>Aberto a oportunidades</strong>
+        </div>
+        <dl class="metrics-grid">
+          <div>
+            <dt>Projetos</dt>
+            <dd id="metric-projects">4</dd>
+          </div>
+          <div>
+            <dt>Stacks</dt>
+            <dd>8</dd>
+          </div>
+          <div>
+            <dt>Deploy</dt>
+            <dd>Vercel</dd>
+          </div>
+        </dl>
+        <div class="skill-strip" aria-label="Tecnologias principais">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+          <span>React</span>
+          <span>Next.js</span>
+          <span>Supabase</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section-shell about" id="sobre" aria-labelledby="about-title">
+      <div>
+        <p class="section-kicker">Sobre</p>
+        <h2 id="about-title">Aprendizado com projeto publicado, não só teoria.</h2>
+      </div>
+      <div class="about-copy">
+        <p>
+          Minha base está em desenvolvimento web moderno: semântica, responsividade, consumo de dados, deploy, versionamento e organização de projetos.
+        </p>
+        <p>
+          O foco agora é entrar em um time onde eu possa aprender rápido, receber feedback e contribuir em tarefas reais com disciplina, comunicação e cuidado com qualidade.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-shell projects" id="projetos" aria-labelledby="projects-title">
+      <div class="section-heading">
+        <p class="section-kicker">Projetos selecionados</p>
+        <h2 id="projects-title">Evidências práticas para recrutadores.</h2>
+        <p>Os cards abaixo carregam dados locais e, quando possível, enriquecem informações públicas do GitHub.</p>
+      </div>
+
+      <div id="projects-container" class="projects-grid" aria-live="polite">
+        <div class="loading-state">
+          <span></span>
+          <span></span>
+          <span></span>
+          <p>Carregando projetos</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell process" id="processo" aria-labelledby="process-title">
+      <div class="section-heading">
+        <p class="section-kicker">Como trabalho</p>
+        <h2 id="process-title">Organização simples, entrega visível.</h2>
+      </div>
+      <div class="process-grid">
+        <article>
+          <span>01</span>
+          <h3>Entendo o objetivo</h3>
+          <p>Leio o problema, separo requisitos e penso primeiro na experiência de quem vai usar.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Construo pequeno</h3>
+          <p>Faço uma versão funcional, testo comportamento essencial e evoluo sem esconder complexidade.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Melhoro com métrica</h3>
+          <p>Reviso responsividade, acessibilidade, performance, segurança básica e clareza do código.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-shell contact" id="contato" aria-labelledby="contact-title">
+      <div>
+        <p class="section-kicker">Contato</p>
+        <h2 id="contact-title">Vamos conversar sobre a vaga?</h2>
+        <p>
+          Se meu perfil fizer sentido para uma oportunidade, eu respondo por email, GitHub ou LinkedIn.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:kaynrhaast297@gmail.com">kaynrhaast297@gmail.com</a>
+          <a href="https://github.com/kaynrhaast297-byte" target="_blank" rel="noopener noreferrer">github.com/kaynrhaast297-byte</a>
+          <a href="https://www.linkedin.com/in/jonathan-medeiros-61459524b" target="_blank" rel="noopener noreferrer">linkedin.com/in/jonathan-medeiros-61459524b</a>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contact-form">
+        <div class="form-row">
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Seu nome" required />
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="seu@email.com" required />
+        </div>
+        <div class="form-row">
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" rows="5" placeholder="Conte rapidamente sobre a oportunidade" required></textarea>
+        </div>
+        <button class="button primary form-submit" type="submit">
+          Abrir email
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <p class="form-note" id="form-status" role="status">O formulário abre seu aplicativo de email com a mensagem preenchida.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="#topo" class="footer-logo">Jonathan<span>.</span>dev</a>
+    <p>© <span id="current-year">2026</span> Jonathan Medeiros. Portfólio em evolução contínua.</p>
+  </footer>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>
